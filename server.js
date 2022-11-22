@@ -1,6 +1,8 @@
-const express = require('express');
-// Import and require mysql2
+//import dependencies
 const mysql = require('mysql2');
+const inquirer =require('inquirer');
+const cTable = require('console.table');
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -12,11 +14,14 @@ app.use(express.json());
 const db = mysql.createConnection(
     {
       host: 'localhost',
-      // MySQL username,
       user: 'root',
       password: 'password',
-      database: 'movies_db'
+      database: 'tracker_db'
     },
     console.log(`Connected to the tracker_db database.`)
   );
   
+connection.connect(err => {
+if (err) throw err;
+console.log('connected to database')
+});

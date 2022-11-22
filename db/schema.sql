@@ -4,22 +4,25 @@ CREATE DATABASE tracker_db;
 USE tracker_db;
 
 CREATE TABLE department (
-id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-department_name VARCHAR(30) NOT NULL
+id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE role (
-id INT NOT NULL AUTO_INCREMENT PRIMARY Key,
-title VARCHAR(30),
-salary INT,
-department_id INT
+id PRIMARY Key AUTO_INCREMENT ,
+title VARCHAR(30) NOT NULL,
+salary INT NOT NULL,
+department_id INT,
+INDEX dep_ind (department_id),
+
 );
 
 CREATE TABLE employee (
-id INT PRIMARY kEY,
-first_name VARCHAR(30),
-last_name VARCHAR(30),
+id INT PRIMARY kEY AUTO_INCREMENT,
+first_name VARCHAR(30) NOT NULL,
+last_name VARCHAR(30) NOT NULL,
 role_id INT,
-manager_id INT
-
+INDEX role_id (role_id,)
+manager_id INT,
+INDEX manager_id (manager_id)
 );
